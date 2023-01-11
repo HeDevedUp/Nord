@@ -4,7 +4,17 @@ import LoginScreen from '../pages/Login/LoginScreen';
 import SplashScreen from '../pages/Splash/SplashScreen';
 import RegisterScreen from '../pages/Register/RegisterScreen';
 
-const Stack = createStackNavigator();
+export interface LoginsParamList {
+  SplashScreen: undefined
+  CommunityScreen: undefined
+  LoginScreen: undefined
+
+
+  [key: string]: undefined | object
+}
+
+
+const Stack = createStackNavigator<LoginsParamList>();
 
 const LoggedOutStack = () => {
   return (

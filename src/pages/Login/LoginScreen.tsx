@@ -1,39 +1,40 @@
 import React, { useState } from 'react'
-import { Text, 
+import { Text,
   View,
   KeyboardAvoidingView,
   TextInput,
   Alert,
   TouchableOpacity,
 StyleSheet } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage' 
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Button } from '../../components/MyButton'
 import '../../config/firebase'
 import { styles } from './LoginScreenStyles'
 import { StackScreenProps } from "@react-navigation/stack";
-<<<<<<< HEAD
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-=======
->>>>>>> a9d09dfa3d1fdd247766faaf0380c9a12e285cc6
 import { getAuth, signInWithEmailAndPassword,sendPasswordResetEmail } from "firebase/auth";
 
+export interface LoginsParamList {
+  SplashScreen: undefined
+  CommunityScreen: undefined
+  LoginScreen: undefined
+
+
+  [key: string]: undefined | object
+}
+
 const auth = getAuth();
+type Props = StackScreenProps<LoginsParamList>
 
 
-<<<<<<< HEAD
+function LoginScreen ({ navigation }: Props): JSX.Element {
 
-const LoginScreen = (): JSX.Element => {
-  const navigation = useNavigation: <NavigationProp>()
-=======
-const LoginScreen = ({navigation}: {navigation: any}) => {
->>>>>>> a9d09dfa3d1fdd247766faaf0380c9a12e285cc6
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const forgotPassword = async() =>{
       if (email === "") {
         Alert.alert("Email and password are mandatory.");
-    } 
+    }
     else {
     sendPasswordResetEmail(auth , email)
         .then(() => {
@@ -49,7 +50,7 @@ const LoginScreen = ({navigation}: {navigation: any}) => {
   const handleSignIn =async() => {
     if (email === '' || password === '') {
      Alert.alert('Email and password are mandatory.')
-     
+
       return;
     }
     else {
@@ -59,7 +60,7 @@ const LoginScreen = ({navigation}: {navigation: any}) => {
             Alert.alert("logged in " + email);
         });
       console.log('Signed in');
-    } catch (error) {      
+    } catch (error) {
           console.log("hi");
       }
     }
@@ -92,15 +93,15 @@ const LoginScreen = ({navigation}: {navigation: any}) => {
           onPress={handleSignIn}
           title="Sign In" />
           <Button
-          onPress={forgotPassword} 
+          onPress={forgotPassword}
           title="Forgot Password?"
           style={ styles.button}
           textStyle ={ styles.text}
           />
           <Text style={styles.outlineText} onPress={() => navigation.navigate("Sign Up")}>
-            Don't Have an account? {" ->> "} 
+            Don't Have an account? {" ->> "}
           </Text>
-          
+
         </View>
       </KeyboardAvoidingView>
     )

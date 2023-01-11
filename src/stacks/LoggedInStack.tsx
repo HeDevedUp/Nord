@@ -6,7 +6,20 @@ import MessagingScreen from '../pages/Messaging/MessagingScreen';
 import CalculatorScreen from '../pages/Calculator/CalculatorScreen';
 import Icon from "react-native-vector-icons/Feather";
 
-const Tab = createBottomTabNavigator();
+export interface BottomTabParamList {
+  NotificationScreen: undefined
+  PictureScreen: undefined
+  MessagingScreen: undefined
+  CalculatorScreen: undefined
+
+  [key: string]: undefined | object
+}
+
+
+const Tab = createBottomTabNavigator<BottomTabParamList>();
+
+
+
 
 const LoggedInStack = (): JSX.Element => {
   return (
